@@ -1,8 +1,8 @@
 /*
 微信阅读
 需要青龙环境
-入口，微信打开 -> https://zl0227233846-1316104230.cos.ap-nanjing.myqcloud.com/index.html?upuid=10327150
-抓包m.*.shop域名下cookie,填入环境变量 yuedu，多账户换行隔开
+入口，微信打开 -> https://zl1208224800-1314804847.cos.ap-nanjing.myqcloud.com/index.html?upuid=10723585
+抓包m.*.work域名下cookie,填入环境变量 yuedu，多账户换行隔开
 
 每天会验证2次左右，碰到验证文章手动打开看一篇即可
 当前每日30篇*6轮180篇文章约2.2元
@@ -183,7 +183,7 @@ class UserInfo {
                 if (this.f >= 3) console.log(`\n可以提现 ${result.info.sum}金币 去提现 ${this.cash} 元\n`), await this.exchange()
                 */
                 if (this.f < 30) {
-                    console.log(`不满足0.3 提现门槛`)
+                    console.log(`不满足 提现门槛`)
                 } else {
                     console.log(`去提现${this.f/100}元。。。。。。`)
                     await this.doWithdraw(this.f)
@@ -197,6 +197,7 @@ class UserInfo {
     }
     async doWithdraw(tx) {
         try {
+            if (tx > 2000) tx = 2000
             let t = Date.now()
             let url = newurl+`/withdrawal/doWithdraw`;
             let body = `amount=` + tx;
